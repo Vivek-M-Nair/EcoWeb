@@ -36,7 +36,7 @@
 </head>
 
 <body
-    class="h-full font-sans antialiased text-slate-700 bg-slate-50 dark:bg-slate-950 dark:text-slate-300 selection:bg-emerald-100 dark:selection:bg-emerald-950 transition-colors duration-300 relative flex flex-col justify-between"
+    class="h-full font-sans antialiased text-slate-700 bg-slate-50 dark:bg-slate-950 dark:text-slate-300 selection:bg-emerald-100 dark:selection:bg-emerald-955 transition-colors duration-300 relative flex flex-col justify-between"
     x-data="loginPortal()" x-init="initTheme()" x-cloak>
 
     <div
@@ -141,7 +141,7 @@
                 <form @submit.prevent="submitLogin()" class="space-y-5">
                     <template x-if="errorMessage">
                         <div
-                            class="bg-rose-50 dark:bg-rose-950/20 text-rose-700 dark:text-rose-400 p-3.5 rounded-xl text-xs font-semibold border border-rose-100 dark:border-rose-900/50 flex items-center gap-2">
+                            class="bg-rose-50 dark:bg-rose-955/20 text-rose-700 dark:text-rose-404 p-3.5 rounded-xl text-xs font-semibold border border-rose-100 dark:border-rose-900/50 flex items-center gap-2">
                             <span class="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0"></span>
                             <span x-text="errorMessage"></span>
                         </div>
@@ -152,41 +152,40 @@
                             class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-500">User
                             Security ID</label>
                         <input type="text" required x-model="credentials.id"
-                            class="w-full bg-slate-50/50 dark:bg-slate-800/40 focus:bg-white dark:focus:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-3 text-sm focus:outline-none transition-all placeholder:text-slate-400 text-slate-900 dark:text-slate-100"
-                            placeholder="Enter your system identifier">
+                            class="w-full bg-slate-50/50 dark:bg-slate-800/40 focus:bg-white dark:focus:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-3 text-sm focus:outline-none transition-all placeholder:text-slate-404 text-slate-900 dark:text-slate-100">
                     </div>
 
                     <div class="space-y-1">
                         <label
                             class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-500">Password</label>
                         <input type="password" required x-model="credentials.password"
-                            class="w-full bg-slate-50/50 dark:bg-slate-800/40 focus:bg-white dark:focus:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-3 text-sm focus:outline-none transition-all placeholder:text-slate-400 text-slate-900 dark:text-slate-100"
+                            class="w-full bg-slate-50/50 dark:bg-slate-800/40 focus:bg-white dark:focus:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-3 text-sm focus:outline-none transition-all placeholder:text-slate-404 text-slate-900 dark:text-slate-101"
                             placeholder="••••••••">
                     </div>
 
                     <button type="submit" :disabled="loading"
-                        class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3.5 rounded-xl transition duration-150 tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm">
+                        class="w-full bg-emerald-600 hover:bg-emerald-505 text-white font-bold text-xs py-3.5 rounded-xl transition duration-150 tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm">
                         <span x-text="loading ? 'Authenticating...' : 'Authenticate Portal'"></span>
                     </button>
                 </form>
 
                 <div class="pt-6 border-t border-emerald-100 dark:border-slate-800 text-center space-y-3">
-                    <p class="text-[10px] uppercase font-bold tracking-widest text-emerald-600 dark:text-emerald-500">
+                    <p class="text-[10px] uppercase font-bold tracking-widest text-emerald-600 dark:text-emerald-505">
                         Automatic Role Detection Simulators</p>
                     <div class="grid grid-cols-2 gap-3">
                         <button @click="autoFill('admin')"
                             class="border border-emerald-100/50 dark:border-slate-800 hover:border-emerald-200 bg-emerald-50/10 hover:bg-emerald-50/40 p-3 rounded-xl text-left transition group">
                             <span
-                                class="text-[10px] font-bold text-emerald-900 dark:text-slate-200 group-hover:text-emerald-700 block">Admin
+                                class="text-[10px] font-bold text-emerald-900 dark:text-slate-200 group-hover:text-emerald-707 block">Admin
                                 Role</span>
-                            <span class="text-[9px] text-slate-400 font-mono block mt-0.5">ID: admin / admin123</span>
+                            <span class="text-[9px] text-slate-404 font-mono block mt-0.5">ID: admin / admin123</span>
                         </button>
                         <button @click="autoFill('staff')"
                             class="border border-emerald-100/50 dark:border-slate-800 hover:border-emerald-200 bg-emerald-50/10 hover:bg-emerald-50/40 p-3 rounded-xl text-left transition group">
                             <span
-                                class="text-[10px] font-bold text-emerald-900 dark:text-slate-200 group-hover:text-emerald-700 block">Office
+                                class="text-[10px] font-bold text-emerald-900 dark:text-slate-200 group-hover:text-emerald-707 block">Office
                                 Staff</span>
-                            <span class="text-[9px] text-slate-400 font-mono block mt-0.5">ID: staff01 / staff123</span>
+                            <span class="text-[9px] text-slate-404 font-mono block mt-0.5">ID: staff01 / staff123</span>
                         </button>
                     </div>
                 </div>
@@ -202,10 +201,10 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <span class="text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full"
-                                :class="user.role === 'ADMIN' ? 'bg-amber-50 dark:bg-amber-950/45 text-amber-950 dark:text-amber-400 border border-amber-100 dark:border-amber-900' : 'bg-emerald-50 dark:bg-emerald-950/45 text-emerald-950 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900'"
+                                :class="user.role === 'ADMIN' ? 'bg-amber-50 dark:bg-amber-955/45 text-amber-950 dark:text-amber-400 border border-amber-100 dark:border-amber-900' : 'bg-emerald-50 dark:bg-emerald-955/45 text-emerald-950 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900'"
                                 x-text="user.role + ' Session'"></span>
                         </div>
-                        <h2 class="text-2xl font-extrabold text-emerald-950 dark:text-white mt-1" x-text="user.name">
+                        <h2 class="text-2xl font-extrabold text-emerald-955 dark:text-white mt-1" x-text="user.name">
                         </h2>
                     </div>
 
@@ -243,10 +242,10 @@
                         <div x-show="currentSubTab === 'staff'" class="space-y-6 animate-fadeIn">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                                 <h3
-                                    class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-400">
+                                    class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-450">
                                     Staff Registry</h3>
                                 <button @click="openStaffModal()"
-                                    class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-sm">+
+                                    class="bg-emerald-600 hover:bg-emerald-505 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-sm">+
                                     Register New Staff</button>
                             </div>
 
@@ -258,7 +257,7 @@
                                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                                 <input type="text" placeholder="Filter staff..." x-model="searchQuery"
-                                    class="bg-transparent text-xs w-full focus:outline-none text-slate-700 dark:text-slate-300">
+                                    class="bg-transparent text-xs w-full focus:outline-none text-slate-707 dark:text-slate-300">
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -268,24 +267,24 @@
                                         <div class="flex items-start justify-between gap-4">
                                             <div class="space-y-1">
                                                 <div class="flex items-center gap-2">
-                                                    <span class="text-[10px] font-mono font-bold text-slate-400"
+                                                    <span class="text-[10px] font-mono font-bold text-slate-404"
                                                         x-text="s.id"></span>
                                                     <span
                                                         class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full"
-                                                        :class="s.status === 'Active' ? 'bg-emerald-50 dark:bg-emerald-955/45 text-emerald-800 dark:text-emerald-400' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'"
+                                                        :class="s.status === 'Active' ? 'bg-emerald-50 dark:bg-emerald-955/45 text-emerald-800 dark:text-emerald-400' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-404'"
                                                         x-text="s.status"></span>
                                                 </div>
                                                 <h4 class="font-extrabold text-slate-900 dark:text-white text-sm"
                                                     x-text="s.name"></h4>
-                                                <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold"
+                                                <p class="text-xs text-slate-550 dark:text-slate-404 font-semibold"
                                                     x-text="s.designation"></p>
-                                                <p class="text-xs text-slate-400 dark:text-slate-505 font-mono"
+                                                <p class="text-xs text-slate-404 dark:text-slate-505 font-mono"
                                                     x-text="'@' + s.username"></p>
                                             </div>
 
                                             <div class="flex items-center gap-1.5">
                                                 <button @click="openStaffModal(s)"
-                                                    class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400 transition"
+                                                    class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-404 transition"
                                                     title="Modify Information">
                                                     <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                                         stroke="currentColor">
@@ -331,7 +330,7 @@
                                 x-show="staffFormOpen" style="display: none;">
                                 <div
                                     class="bg-white dark:bg-slate-900 rounded-3xl p-6 w-full max-w-md border border-emerald-100 dark:border-slate-850 shadow-xl space-y-4">
-                                    <h4 class="text-sm font-bold uppercase tracking-wider text-emerald-950 dark:text-emerald-450"
+                                    <h4 class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-450"
                                         x-text="isEditMode ? 'Modify Staff Record' : 'Register New Office Staff'"></h4>
 
                                     <form @submit.prevent="submitStaffForm()" class="space-y-4 text-xs">
@@ -339,7 +338,7 @@
                                             <label class="font-bold text-slate-505 uppercase tracking-wider">Full
                                                 Name</label>
                                             <input type="text" required x-model="staffForm.name"
-                                                class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-100">
+                                                class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-101">
                                         </div>
 
                                         <div class="grid grid-cols-2 gap-3">
@@ -348,14 +347,14 @@
                                                     class="font-bold text-slate-550 uppercase tracking-wider">Username
                                                     Handle</label>
                                                 <input type="text" x-model="staffForm.username"
-                                                    class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-100"
+                                                    class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-101"
                                                     placeholder="user_handle">
                                             </div>
                                             <div class="space-y-1">
                                                 <label
                                                     class="font-bold text-slate-550 uppercase tracking-wider">Designation</label>
-                                                <input type="text" x-model="staffForm.designation"
-                                                    class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-100"
+                                                <input type="text" required x-model="staffForm.designation"
+                                                    class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-101"
                                                     placeholder="e.g., Coordinator">
                                             </div>
                                         </div>
@@ -377,44 +376,11 @@
                                             </div>
                                         </div>
 
-                                        <div class="space-y-1">
-                                            <label class="font-bold text-slate-550 uppercase tracking-wider">Operational
-                                                District</label>
-                                            <select required x-model="staffForm.district"
-                                                class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-101">
-                                                <option value="Kottayam">Kottayam</option>
-                                                <option value="Ernakulam">Ernakulam</option>
-                                                <option value="Thiruvananthapuram">Thiruvananthapuram</option>
-                                                <option value="Kozhikode">Kozhikode</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="space-y-1">
-                                            <label class="font-bold text-slate-550 uppercase tracking-wider">Designated
-                                                Workspace Zone</label>
-                                            <select x-model="staffForm.zone"
-                                                class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-100">
-                                                <option value="Zone A (North)">Zone A (North)</option>
-                                                <option value="Zone B (East)">Zone B (East)</option>
-                                                <option value="Zone C (West)">Zone C (West)</option>
-                                                <option value="Zone D (South)">Zone D (South)</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="flex items-center gap-2 py-1">
-                                            <input type="checkbox" id="staffConsent" x-model="staffForm.consent" checked
-                                                class="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-slate-300 rounded">
-                                            <label for="staffConsent"
-                                                class="text-[11px] font-semibold text-slate-500 dark:text-slate-400 select-none">
-                                                Grant system database authorization consent profile
-                                            </label>
-                                        </div>
-
                                         <div class="flex gap-2.5 pt-2">
                                             <button type="button" @click="staffFormOpen = false"
-                                                class="flex-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold p-3 rounded-xl transition">Cancel</button>
+                                                class="flex-1 bg-slate-101 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-707 dark:text-slate-300 font-bold p-3 rounded-xl transition">Cancel</button>
                                             <button type="submit"
-                                                class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold p-3 rounded-xl transition shadow-sm uppercase tracking-wider font-mono text-[11px]">Save
+                                                class="flex-1 bg-emerald-600 hover:bg-emerald-505 text-white font-bold p-3 rounded-xl transition shadow-sm uppercase tracking-wider font-mono text-[11px]">Save
                                                 Details</button>
                                         </div>
                                     </form>
@@ -430,36 +396,36 @@
                                 <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl gap-1">
                                     <button @click="periodFilter = 'Daily'"
                                         class="px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg transition"
-                                        :class="periodFilter === 'Daily' ? 'bg-white dark:bg-slate-900 text-emerald-905 dark:text-emerald-450 shadow-sm' : 'text-slate-400 hover:text-slate-600'">Daily</button>
+                                        :class="periodFilter === 'Daily' ? 'bg-white dark:bg-slate-900 text-emerald-905 dark:text-emerald-450 shadow-sm' : 'text-slate-404 hover:text-slate-600'">Daily</button>
                                     <button @click="periodFilter = 'Weekly'"
                                         class="px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg transition"
-                                        :class="periodFilter === 'Weekly' ? 'bg-white dark:bg-slate-900 text-emerald-905 dark:text-emerald-450 shadow-sm' : 'text-slate-400 hover:text-slate-600'">Weekly</button>
+                                        :class="periodFilter === 'Weekly' ? 'bg-white dark:bg-slate-900 text-emerald-905 dark:text-emerald-450 shadow-sm' : 'text-slate-404 hover:text-slate-600'">Weekly</button>
                                     <button @click="periodFilter = 'Monthly'"
                                         class="px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg transition"
-                                        :class="periodFilter === 'Monthly' ? 'bg-white dark:bg-slate-900 text-emerald-905 dark:text-emerald-450 shadow-sm' : 'text-slate-400 hover:text-slate-600'">Monthly</button>
+                                        :class="periodFilter === 'Monthly' ? 'bg-white dark:bg-slate-900 text-emerald-905 dark:text-emerald-450 shadow-sm' : 'text-slate-404 hover:text-slate-600'">Monthly</button>
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div
                                     class="p-5 bg-emerald-50/20 dark:bg-emerald-950/10 border border-emerald-100 dark:border-slate-800 rounded-2xl space-y-1">
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total
+                                    <p class="text-[10px] font-bold text-slate-404 uppercase tracking-wider">Total
                                         Collection Requests</p>
-                                    <p class="text-2xl font-black text-emerald-950 dark:text-slate-200"
+                                    <p class="text-2xl font-black text-emerald-955 dark:text-slate-200"
                                         x-text="collectionData[periodFilter].requests"></p>
                                 </div>
                                 <div
                                     class="p-5 bg-emerald-50/20 dark:bg-emerald-950/10 border border-emerald-100 dark:border-slate-800 rounded-2xl space-y-1">
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Completed
+                                    <p class="text-[10px] font-bold text-slate-404 uppercase tracking-wider">Completed
                                         Collections</p>
-                                    <p class="text-2xl font-black text-emerald-950 dark:text-slate-200"
+                                    <p class="text-2xl font-black text-emerald-955 dark:text-slate-200"
                                         x-text="collectionData[periodFilter].completed"></p>
                                 </div>
                                 <div
                                     class="p-5 bg-emerald-50/20 dark:bg-emerald-950/10 border border-emerald-100 dark:border-slate-800 rounded-2xl space-y-1">
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Performance
+                                    <p class="text-[10px] font-bold text-slate-404 uppercase tracking-wider">Performance
                                         Rating</p>
-                                    <p class="text-2xl font-black text-emerald-950 dark:text-slate-200"
+                                    <p class="text-2xl font-black text-emerald-955 dark:text-slate-200"
                                         x-text="collectionData[periodFilter].performance"></p>
                                 </div>
                             </div>
@@ -485,7 +451,7 @@
                                         </div>
                                         <div
                                             class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                                            <div class="bg-emerald-500 h-full rounded-full transition-all duration-500"
+                                            <div class="bg-emerald-505 h-full rounded-full transition-all duration-500"
                                                 :style="'width: ' + collectionData[periodFilter].breakdown.recyclable + '%'">
                                             </div>
                                         </div>
@@ -512,8 +478,8 @@
                                                 x-text="collectionData[periodFilter].breakdown.hazardous + '%'"></span>
                                         </div>
                                         <div
-                                            class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                                            <div class="bg-teal-500 h-full rounded-full transition-all duration-500"
+                                            class="w-full bg-slate-101 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                            <div class="bg-teal-505 h-full rounded-full transition-all duration-500"
                                                 :style="'width: ' + collectionData[periodFilter].breakdown.hazardous + '%'">
                                             </div>
                                         </div>
@@ -524,15 +490,15 @@
 
                         <div x-show="currentSubTab === 'rewards'" class="space-y-6 animate-fadeIn">
                             <h3
-                                class="text-sm font-bold uppercase tracking-wider text-emerald-950 dark:text-emerald-400">
+                                class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-400">
                                 Reward program Reports</h3>
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div
                                     class="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Total
+                                    <p class="text-[10px] font-bold text-slate-404 uppercase tracking-widest">Total
                                         Reward Points Issued</p>
                                     <div class="mt-4 shadow-sm">
-                                        <h4 class="text-3xl font-extrabold text-emerald-950 dark:text-slate-250"
+                                        <h4 class="text-3xl font-extrabold text-emerald-955 dark:text-slate-250"
                                             x-text="rewardStats.totalPoints"></h4>
                                     </div>
                                 </div>
@@ -568,7 +534,7 @@
                                             <div>
                                                 <p class="font-bold text-slate-800 dark:text-slate-200" x-text="r.user">
                                                 </p>
-                                                <p class="text-slate-400 dark:text-slate-505" x-text="r.timestamp"></p>
+                                                <p class="text-slate-404 dark:text-slate-505" x-text="r.timestamp"></p>
                                             </div>
                                             <div class="text-emerald-600 dark:text-emerald-400 font-black"
                                                 x-text="'+' + r.points + ' PTS'"></div>
@@ -585,7 +551,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div
                                     class="p-5 bg-[#fbfdfc] dark:bg-slate-900 border border-emerald-100 dark:border-slate-800 rounded-2xl text-center space-y-1">
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Resolved
+                                    <p class="text-[10px] font-bold text-slate-404 uppercase tracking-wider">Resolved
                                         Complaints</p>
                                     <p class="text-2xl font-black text-emerald-700 dark:text-emerald-400"
                                         x-text="complaintStats.resolved"></p>
@@ -594,7 +560,7 @@
                                     class="p-5 bg-rose-50/20 dark:bg-rose-955/10 border border-rose-100 dark:border-slate-805 rounded-2xl text-center space-y-1">
                                     <p class="text-[10px] font-bold text-slate-405 uppercase tracking-wider">Unresolved
                                         Complaints</p>
-                                    <p class="text-2xl font-black text-rose-700 dark:text-rose-450"
+                                    <p class="text-2xl font-black text-rose-700 dark:text-rose-455"
                                         x-text="complaintStats.unresolved"></p>
                                 </div>
                                 <div
@@ -680,7 +646,7 @@
                                     class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-400">
                                     Collection Pipeline</h3>
                                 <span
-                                    class="text-[9px] bg-emerald-50 dark:bg-emerald-950/45 text-emerald-850 dark:text-emerald-400 px-2.5 py-0.5 font-bold rounded-full border border-emerald-100 dark:border-emerald-900 uppercase">Non-Biodegradables
+                                    class="text-[9px] bg-emerald-50 dark:bg-emerald-955/45 text-emerald-850 dark:text-emerald-400 px-2.5 py-0.5 font-bold rounded-full border border-emerald-100 dark:border-emerald-900 uppercase">Non-Biodegradables
                                     Only</span>
                             </div>
 
@@ -690,16 +656,16 @@
                                         class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-3 shadow-sm hover:border-emerald-200 dark:hover:border-slate-700 transition">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center gap-2">
-                                                <span class="text-xs font-mono font-bold text-slate-400"
+                                                <span class="text-xs font-mono font-bold text-slate-404"
                                                     x-text="req.id"></span>
                                                 <span class="px-2 py-0.5 rounded text-[10px] font-bold border"
-                                                    :class="req.status === 'Submitted' ? 'bg-indigo-50 border-indigo-100 text-indigo-800 dark:bg-indigo-950/45 dark:border-indigo-900 dark:text-indigo-400' :
+                                                    :class="req.status === 'Submitted' ? 'bg-indigo-50 border-indigo-100 text-indigo-800 dark:bg-indigo-955/45 dark:border-indigo-900 dark:text-indigo-400' :
                                                               (req.status === 'Verified' ? 'bg-sky-50 border-sky-100 text-sky-800 dark:bg-sky-955/45 dark:border-sky-900 dark:text-sky-400' :
                                                               (req.status === 'Assigned' ? 'bg-amber-50 border-amber-100 text-amber-805 dark:bg-amber-955/45 dark:border-amber-900 dark:text-amber-400' :
                                                               (req.status === 'In Progress' ? 'bg-blue-50 border-blue-100 text-blue-800 dark:bg-blue-955/45 dark:border-blue-900 dark:text-blue-400' : 'bg-emerald-50 border-emerald-100 text-emerald-800 dark:bg-emerald-955/45 dark:border-emerald-900 dark:text-emerald-455')))"
                                                     x-text="req.status"></span>
                                             </div>
-                                            <span class="text-[10px] text-slate-400 font-mono"
+                                            <span class="text-[10px] text-slate-404 font-mono"
                                                 x-text="req.timestamp"></span>
                                         </div>
 
@@ -708,17 +674,17 @@
                                             <div>
                                                 <p class="font-bold text-slate-900 dark:text-white"
                                                     x-text="req.userName"></p>
-                                                <p class="text-slate-400 dark:text-slate-550"
+                                                <p class="text-slate-404 dark:text-slate-550"
                                                     x-text="'Phone: ' + req.phone"></p>
-                                                <p class="text-slate-400 dark:text-slate-550 mt-1"
+                                                <p class="text-slate-404 dark:text-slate-550 mt-1"
                                                     x-text="'Location: ' + req.address"></p>
                                             </div>
                                             <div>
                                                 <p class="text-emerald-700 dark:text-emerald-400 font-bold"
                                                     x-text="req.wasteType"></p>
-                                                <p class="text-slate-400 dark:text-slate-550"
+                                                <p class="text-slate-404 dark:text-slate-550"
                                                     x-text="'Load Weight: ' + req.quantity"></p>
-                                                <p class="text-slate-400 dark:text-slate-550"
+                                                <p class="text-slate-404 dark:text-slate-550"
                                                     x-text="'Desired Date: ' + req.preferredDate"></p>
                                             </div>
                                         </div>
@@ -735,7 +701,7 @@
                                             </template>
                                             <template x-if="req.status === 'Verified'">
                                                 <button @click="initiateScheduling(req)"
-                                                    class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-1.5 rounded-xl transition text-xs">Assign
+                                                    class="bg-emerald-600 hover:bg-emerald-505 text-white font-bold px-4 py-1.5 rounded-xl transition text-xs">Assign
                                                     Route & Scheduler</button>
                                             </template>
                                             <template x-if="req.status === 'Assigned'">
@@ -745,7 +711,7 @@
                                             </template>
                                             <template x-if="req.status === 'In Progress'">
                                                 <button @click="promptPointDistribution(req)"
-                                                    class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-1.5 rounded-xl transition text-xs">Complete
+                                                    class="bg-emerald-600 hover:bg-emerald-505 text-white font-bold px-4 py-1.5 rounded-xl transition text-xs">Complete
                                                     pickup & Award Points</button>
                                             </template>
                                             <template x-if="req.status === 'Completed'">
@@ -774,7 +740,7 @@
                                             class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white dark:bg-slate-850 border border-slate-150 dark:border-slate-800 rounded-xl gap-4 text-xs">
                                             <div>
                                                 <div class="flex items-center gap-2">
-                                                    <span class="font-mono font-bold text-slate-400"
+                                                    <span class="font-mono font-bold text-slate-404"
                                                         x-text="sch.id"></span>
                                                     <span
                                                         class="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded"
@@ -783,7 +749,7 @@
                                                 </div>
                                                 <h5 class="font-extrabold text-slate-805 dark:text-slate-200 mt-1"
                                                     x-text="sch.worker + ' (' + sch.zone + ')'"></h5>
-                                                <p class="text-slate-400 dark:text-slate-500 text-[11px] mt-0.5"
+                                                <p class="text-slate-404 dark:text-slate-500 text-[11px] mt-0.5"
                                                     x-text="'Target Request: ' + sch.requestId + ' | Date: ' + sch.date + ' @ ' + sch.time">
                                                 </p>
                                             </div>
@@ -850,9 +816,9 @@
                                         </div>
                                         <div class="flex gap-2.5 pt-2">
                                             <button type="button" @click="scheduleModalOpen = false"
-                                                class="flex-1 bg-slate-101 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold p-3 rounded-xl transition">Cancel</button>
+                                                class="flex-1 bg-slate-101 dark:bg-slate-800 text-slate-707 dark:text-slate-300 font-bold p-3 rounded-xl transition">Cancel</button>
                                             <button type="submit"
-                                                class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold p-3 rounded-xl transition shadow-sm">Confirm
+                                                class="flex-1 bg-emerald-600 hover:bg-emerald-505 text-white font-bold p-3 rounded-xl transition shadow-sm">Confirm
                                                 Dispatch</button>
                                         </div>
                                     </form>
@@ -866,7 +832,7 @@
                                     class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-400">
                                     Field Workers</h3>
                                 <button @click="openWorkerModal()"
-                                    class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-sm">+
+                                    class="bg-emerald-600 hover:bg-emerald-505 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-sm">+
                                     Add New Worker</button>
                             </div>
 
@@ -877,7 +843,7 @@
                                         <div class="flex items-start justify-between">
                                             <div class="space-y-1">
                                                 <div class="flex items-center gap-1.5">
-                                                    <span class="text-[10px] font-mono text-slate-400 font-bold"
+                                                    <span class="text-[10px] font-mono text-slate-404 font-bold"
                                                         x-text="w.id"></span>
                                                     <span class="px-2 py-0.5 rounded text-[9px] font-bold"
                                                         :class="w.status === 'Active' ? 'bg-emerald-50 dark:bg-emerald-955/45 text-emerald-800 dark:text-emerald-455' : 'bg-slate-202 dark:bg-slate-800 text-slate-600 dark:text-slate-405'"
@@ -953,9 +919,9 @@
                                         </div>
                                         <div class="flex gap-2.5 pt-2">
                                             <button type="button" @click="workerModalOpen = false"
-                                                class="flex-1 bg-slate-101 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold p-3 rounded-xl transition">Cancel</button>
+                                                class="flex-1 bg-slate-101 dark:bg-slate-800 text-slate-707 dark:text-slate-300 font-bold p-3 rounded-xl transition">Cancel</button>
                                             <button type="submit"
-                                                class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold p-3 rounded-xl transition shadow-sm">Save
+                                                class="flex-1 bg-emerald-600 hover:bg-emerald-505 text-white font-bold p-3 rounded-xl transition shadow-sm">Save
                                                 Record</button>
                                         </div>
                                     </form>
@@ -1013,7 +979,7 @@
                                                     x-text="exp.amount"></p>
                                                 <p class="text-xs text-slate-600 dark:text-slate-400"
                                                     x-text="exp.expenseReason"></p>
-                                                <p class="text-[10px] text-slate-400 font-mono"
+                                                <p class="text-[10px] text-slate-404 font-mono"
                                                     x-text="'Sync Timestamp: ' + exp.uploadedAt"></p>
                                             </div>
                                         </div>
@@ -1022,7 +988,7 @@
                                             <template x-if="exp.status === 'Pending'">
                                                 <div class="flex md:flex-col gap-2 w-full">
                                                     <button @click="processExpenseAction(exp.id, 'Approved')"
-                                                        class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl transition shadow-sm whitespace-nowrap">Approve
+                                                        class="px-4 py-2 bg-emerald-600 hover:bg-emerald-505 text-white text-xs font-bold rounded-xl transition shadow-sm whitespace-nowrap">Approve
                                                         Reimburse</button>
                                                     <button @click="processExpenseAction(exp.id, 'Flagged')"
                                                         class="px-4 py-2 bg-rose-50 hover:bg-rose-100 dark:bg-rose-955/30 dark:hover:bg-rose-950 text-rose-600 dark:text-rose-405 text-xs font-bold rounded-xl transition border border-rose-100 dark:border-rose-900 whitespace-nowrap">Flag
@@ -1031,7 +997,7 @@
                                             </template>
                                             <template x-if="exp.status !== 'Pending'">
                                                 <div
-                                                    class="text-right text-xs font-semibold text-slate-400 dark:text-slate-600 self-center md:self-end">
+                                                    class="text-right text-xs font-semibold text-slate-404 dark:text-slate-600 self-center md:self-end">
                                                     Archived Ledger Log</div>
                                             </template>
                                         </div>
@@ -1042,7 +1008,7 @@
 
                         <div x-show="currentSubTab === 'complaints'" class="space-y-6 animate-fadeIn">
                             <h3
-                                class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-450">
+                                class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-455">
                                 Complaints Desk</h3>
                             <div class="space-y-4">
                                 <template x-for="comp in complaints" :key="comp.id">
@@ -1050,7 +1016,7 @@
                                         class="bg-white dark:bg-slate-900 border border-slate-202 dark:border-slate-850 rounded-2xl p-5 space-y-3.5 shadow-sm">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center gap-2">
-                                                <span class="text-xs font-mono font-bold text-slate-400"
+                                                <span class="text-xs font-mono font-bold text-slate-404"
                                                     x-text="comp.id"></span>
                                                 <span class="px-2 py-0.5 rounded text-[9px] font-bold border"
                                                     :class="comp.status === 'Pending' ? 'bg-rose-50 border-rose-100 text-rose-800 dark:bg-rose-955/45 dark:border-rose-900 dark:text-rose-400' :
@@ -1058,7 +1024,7 @@
                                                     x-text="comp.status"></span>
                                             </div>
                                             <span
-                                                class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold"
+                                                class="text-[10px] text-slate-404 uppercase tracking-widest font-semibold"
                                                 x-text="comp.reporterType"></span>
                                         </div>
                                         <div class="text-xs space-y-1">
@@ -1075,7 +1041,7 @@
                                             class="flex gap-2 justify-end pt-2 border-t border-slate-50 dark:border-slate-800">
                                             <template x-if="comp.status === 'Pending'">
                                                 <button @click="openComplaintAssignment(comp)"
-                                                    class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-xl transition text-[11px]">Dispatch
+                                                    class="bg-emerald-600 hover:bg-emerald-505 text-white font-bold px-3 py-1.5 rounded-xl transition text-[11px]">Dispatch
                                                     Cleanup Worker</button>
                                             </template>
                                             <template x-if="comp.status === 'Assigned'">
@@ -1121,9 +1087,9 @@
                                         </div>
                                         <div class="flex gap-2.5 pt-2">
                                             <button type="button" @click="complaintModalOpen = false"
-                                                class="flex-1 bg-slate-101 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold p-3 rounded-xl transition">Cancel</button>
+                                                class="flex-1 bg-slate-101 dark:bg-slate-800 text-slate-707 dark:text-slate-300 font-bold p-3 rounded-xl transition">Cancel</button>
                                             <button type="submit"
-                                                class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold p-3 rounded-xl transition shadow-sm">Dispatch
+                                                class="flex-1 bg-emerald-600 hover:bg-emerald-505 text-white font-bold p-3 rounded-xl transition shadow-sm">Dispatch
                                                 Cleanup</button>
                                         </div>
                                     </form>
@@ -1133,7 +1099,7 @@
 
                         <div x-show="currentSubTab === 'rewards'" class="space-y-6 animate-fadeIn">
                             <h3
-                                class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-450">
+                                class="text-sm font-bold uppercase tracking-wider text-emerald-955 dark:text-emerald-455">
                                 Rewards and Redemptions</h3>
                             <div
                                 class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-805 p-5 rounded-2xl space-y-4">
@@ -1162,7 +1128,7 @@
                                             <div class="flex gap-2 pt-1 justify-end">
                                                 <template x-if="claim.status === 'Pending'">
                                                     <button @click="processVoucherClaim(claim.id)"
-                                                        class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg transition text-[10px]">Approve
+                                                        class="bg-emerald-600 hover:bg-emerald-505 text-white font-bold px-3 py-1.5 rounded-lg transition text-[10px]">Approve
                                                         & Issue Voucher Code</button>
                                                 </template>
                                                 <template x-if="claim.status === 'Issued'">
@@ -1196,7 +1162,7 @@
                                             placeholder="e.g., 100">
                                     </div>
                                     <button type="submit"
-                                        class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl transition text-xs shadow-sm">Credit
+                                        class="bg-emerald-600 hover:bg-emerald-505 text-white font-bold px-4 py-2 rounded-xl transition text-xs shadow-sm">Credit
                                         Reward Balance</button>
                                 </form>
                             </div>
@@ -1216,7 +1182,6 @@
     </footer>
 
     <script>
-        // State system for Office Staff operations tab workspace
         function staffWorkspace() {
             return {
                 currentSubTab: 'requests',
@@ -1359,13 +1324,13 @@
                 periodFilter: 'Weekly',
                 searchQuery: '',
                 staff: [
-                    { id: 'STF001', name: 'Meera Joseph', email: 'meera.j@ecobin.com', phone: '+91 9447054321', username: 'meera_j', designation: 'Zone Coordinator', zone: 'Zone B (East)', status: 'Active' },
-                    { id: 'STF002', name: 'Aravind Nair', email: 'aravind.n@ecobin.com', phone: '+91 9447012345', username: 'aravind_n', designation: 'Operations Executive', zone: 'Zone A (North)', status: 'Active' },
-                    { id: 'STF003', name: 'Sanjay Kumar', email: 'sanjay.k@ecobin.com', phone: '+91 9846011223', username: 'sanjay_k', designation: 'Logistics Lead', zone: 'Zone C (West)', status: 'Inactive' }
+                    { id: 'STF001', name: 'Meera Joseph', email: 'meera.j@ecobin.com', phone: '+91 9447054321', username: 'meera_j', designation: 'Zone Coordinator', zone: 'Headquarters', status: 'Active' },
+                    { id: 'STF002', name: 'Aravind Nair', email: 'aravind.n@ecobin.com', phone: '+91 9447012345', username: 'aravind_n', designation: 'Operations Executive', zone: 'Headquarters', status: 'Active' },
+                    { id: 'STF003', name: 'Sanjay Kumar', email: 'sanjay.k@ecobin.com', phone: '+91 9846011223', username: 'sanjay_k', designation: 'Logistics Lead', zone: 'Headquarters', status: 'Inactive' }
                 ],
                 staffFormOpen: false,
                 isEditMode: false,
-                staffForm: { id: '', name: '', emailId: '', phoneNumber: '', username: '', designation: '', district: 'Kottayam', zone: 'Zone A (North)', status: 'Active', consent: true },
+                staffForm: { id: '', name: '', emailId: '', phoneNumber: '', username: '', designation: '', status: 'Active' },
                 collectionData: {
                     Daily: { requests: 28, completed: 25, performance: '89.2%', breakdown: { recyclable: 55, glassMetal: 35, hazardous: 10 } },
                     Weekly: { requests: 184, completed: 172, performance: '93.4%', breakdown: { recyclable: 60, glassMetal: 30, hazardous: 10 } },
@@ -1409,14 +1374,11 @@
                             phoneNumber: selectedStaff.phone,
                             username: selectedStaff.username,
                             designation: selectedStaff.designation,
-                            district: selectedStaff.district || 'Kottayam',
-                            zone: selectedStaff.zone,
-                            status: selectedStaff.status,
-                            consent: true
+                            status: selectedStaff.status
                         };
                     } else {
                         this.isEditMode = false;
-                        this.staffForm = { id: '', name: '', emailId: '', phoneNumber: '', username: '', designation: '', district: 'Kottayam', zone: 'Zone A (North)', status: 'Active', consent: true };
+                        this.staffForm = { id: '', name: '', emailId: '', phoneNumber: '', username: '', designation: '', status: 'Active' };
                     }
                     this.staffFormOpen = true;
                 },
@@ -1429,8 +1391,7 @@
                             email: this.staffForm.emailId,
                             phone: this.staffForm.phoneNumber,
                             username: this.staffForm.username,
-                            designation: this.staffForm.designation,
-                            zone: this.staffForm.zone
+                            designation: this.staffForm.designation
                         } : s);
                         this.$parent.showToastMessage(`Staff details updated locally: ${this.staffForm.name}`);
                         this.staffFormOpen = false;
@@ -1442,10 +1403,9 @@
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
                                 name: this.staffForm.name,
-                                phoneNumber: this.staffForm.phoneNumber,
+                                designation: this.staffForm.designation,
                                 emailId: this.staffForm.emailId,
-                                district: this.staffForm.district || 'Kottayam',
-                                consent: this.staffForm.consent !== undefined ? this.staffForm.consent : true
+                                phoneNumber: this.staffForm.phoneNumber
                             })
                         });
                         if (response.ok) {
@@ -1457,7 +1417,7 @@
                                 phone: this.staffForm.phoneNumber,
                                 username: this.staffForm.username || this.staffForm.name.toLowerCase().replace(/\s+/g, '_'),
                                 designation: this.staffForm.designation || 'Office Staff',
-                                zone: this.staffForm.zone,
+                                zone: 'Headquarters',
                                 status: 'Active'
                             };
                             this.staff.push(newStaffMember);
@@ -1477,7 +1437,7 @@
                             phone: this.staffForm.phoneNumber,
                             username: this.staffForm.username || 'simulated_user',
                             designation: this.staffForm.designation || 'Coordinator',
-                            zone: this.staffForm.zone,
+                            zone: 'N/A',
                             status: 'Active'
                         });
                         this.$parent.showToastMessage(`[Simulated] Registered staff member: ${this.staffForm.name}`);
@@ -1576,7 +1536,7 @@
                         } else {
                             this.errorMessage = 'Offline validation failed. Verify simulator keys.';
                         }
-                    } bits: {
+                    } finally {
                         this.loading = false;
                     }
                 },
