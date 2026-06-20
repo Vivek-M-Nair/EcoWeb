@@ -367,13 +367,23 @@
 
                                             <div class="flex items-center gap-1">
                                                 <button @click="openStaffModal(s)"
-                                                    class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-650 dark:text-slate-400 transition"
+                                                    class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400 transition"
                                                     title="Modify Information">
                                                     <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                                         stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2"
                                                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                    </svg>
+                                                </button>
+                                                <button @click="deleteStaff(s.id, s.role)"
+                                                    class="p-1.5 hover:bg-rose-50 dark:hover:bg-rose-955/40 rounded-lg text-rose-600 dark:text-rose-455 transition"
+                                                    title="Delete Member">
+                                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                     </svg>
                                                 </button>
                                             </div>
@@ -423,8 +433,8 @@
                                         <div class="space-y-1">
                                             <label class="font-bold text-slate-500 uppercase tracking-wider">Account
                                                 Role</label>
-                                            <select x-model="staffForm.role"
-                                                class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-100">
+                                            <select x-model="staffForm.role" :disabled="isEditMode"
+                                                class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:outline-none dark:text-slate-100 disabled:opacity-60 disabled:cursor-not-allowed">
                                                 <option value="STAFF">Office Staff Coordinator</option>
                                                 <option value="WORKER">Collection Field Worker</option>
                                             </select>
@@ -1860,10 +1870,10 @@
                 async submitStaffForm() {
                     this.staffFormError = '';
 
-                    // Email validation
-                    const emailRegex = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@(gmail\.com|yahoo\.com)$/;
+                    // Email validation (local part must be at least 6 characters)
+                    const emailRegex = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]{5,}@(gmail\.com|yahoo\.com)$/;
                     if (!emailRegex.test(this.staffForm.emailId)) {
-                        this.staffFormError = 'Email must be a valid @gmail.com or @yahoo.com address.';
+                        this.staffFormError = 'Email must be a valid @gmail.com or @yahoo.com address and local part must be at least 6 characters.';
                         return;
                     }
 
@@ -1878,9 +1888,19 @@
                     this.newStaffCredentials = null;
 
                     try {
-                        const url = this.staffForm.role === 'STAFF'
-                            ? `${window.portalAppInstance.serverUrl}/api/register/staff`
-                            : `${window.portalAppInstance.serverUrl}/api/register/worker`;
+                        let url = '';
+                        let method = '';
+                        if (this.isEditMode) {
+                            url = this.staffForm.role === 'STAFF'
+                                ? `${window.portalAppInstance.serverUrl}/api/register/staff/${this.staffForm.id}`
+                                : `${window.portalAppInstance.serverUrl}/api/register/worker/${this.staffForm.id}`;
+                            method = 'PUT';
+                        } else {
+                            url = this.staffForm.role === 'STAFF'
+                                ? `${window.portalAppInstance.serverUrl}/api/register/staff`
+                                : `${window.portalAppInstance.serverUrl}/api/register/worker`;
+                            method = 'POST';
+                        }
 
                         const payload = this.staffForm.role === 'STAFF'
                             ? {
@@ -1900,14 +1920,14 @@
                             };
 
                         const response = await fetch(url, {
-                            method: 'POST',
+                            method: method,
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)
                         });
 
                         if (!response.ok) {
                             const errorText = await response.text();
-                            throw new Error(errorText || 'Registration HTTP status failed.');
+                            throw new Error(errorText || 'Registration/Update HTTP status failed.');
                         }
 
                         const result = await response.json();
@@ -1915,15 +1935,6 @@
                         if (result === "account already exist") {
                             throw new Error('Account credentials already exist in control system database.');
                         }
-
-                        // Save coordinates to memory list
-                        const newId = result.collection_worker_id;
-                        const genPass = result.password;
-
-                        this.newStaffCredentials = {
-                            id: newId,
-                            password: genPass
-                        };
 
                         if (this.isEditMode) {
                             const idx = this.staffList.findIndex(s => s.id === this.staffForm.id);
@@ -1939,7 +1950,18 @@
                                     localBody: this.staffForm.localBody
                                 };
                             }
+                            window.portalAppInstance.showToast('Staff updated successfully!');
+                            this.staffFormOpen = false;
                         } else {
+                            // Save coordinates to memory list
+                            const newId = result.collection_worker_id;
+                            const genPass = result.password;
+
+                            this.newStaffCredentials = {
+                                id: newId,
+                                password: genPass
+                            };
+
                             this.staffList.push({
                                 id: newId,
                                 name: this.staffForm.name,
@@ -1951,13 +1973,13 @@
                                 district: this.staffForm.district,
                                 localBody: this.staffForm.localBody
                             });
+                            window.portalAppInstance.showToast('Staff registered successfully!');
                         }
 
-                        window.portalAppInstance.showToast('Staff registered successfully!');
                         this.fetchStaff();
 
                     } catch (err) {
-                        window.portalAppInstance.showToast(err.message || 'Worker registration failed.', 'error');
+                        window.portalAppInstance.showToast(err.message || 'Worker saving failed.', 'error');
                     } finally {
                         this.formSaving = false;
                     }
@@ -2040,6 +2062,33 @@
                         }
                     } catch (e) {
                         window.portalAppInstance.showToast('Deletion failed.', 'error');
+                    }
+                },
+
+                async deleteStaff(id, role) {
+                    if (!confirm(`Are you sure you want to permanently delete this ${role.toLowerCase()} record?`)) return;
+                    try {
+                        const url = role === 'STAFF'
+                            ? `${window.portalAppInstance.serverUrl}/api/account/staff/${id}`
+                            : `${window.portalAppInstance.serverUrl}/api/account/worker/${id}`;
+
+                        const response = await fetch(url, {
+                            method: 'DELETE'
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Failed to delete staff record.');
+                        }
+
+                        const data = await response.json();
+                        if (data.status === 'success') {
+                            window.portalAppInstance.showToast('Staff member deleted successfully.');
+                            this.fetchStaff();
+                        } else {
+                            throw new Error(data.message || 'Deletion failed.');
+                        }
+                    } catch (e) {
+                        window.portalAppInstance.showToast(e.message || 'Deletion failed.', 'error');
                     }
                 }
             };
